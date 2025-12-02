@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ruste\\OneDrive - Curio\\blok C\\GamblingApp\\GamblingApp\\GamblingApp.csproj": {}
+    "C:\\Users\\ruste\\OneDrive - Curio\\blok C\\veryReal_GamblingApp\\GamblingApp\\GamblingApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ruste\\OneDrive - Curio\\blok C\\GamblingApp\\GamblingApp\\GamblingApp.csproj": {
+    "C:\\Users\\ruste\\OneDrive - Curio\\blok C\\veryReal_GamblingApp\\GamblingApp\\GamblingApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ruste\\OneDrive - Curio\\blok C\\GamblingApp\\GamblingApp\\GamblingApp.csproj",
+        "projectUniqueName": "C:\\Users\\ruste\\OneDrive - Curio\\blok C\\veryReal_GamblingApp\\GamblingApp\\GamblingApp.csproj",
         "projectName": "GamblingApp",
-        "projectPath": "C:\\Users\\ruste\\OneDrive - Curio\\blok C\\GamblingApp\\GamblingApp\\GamblingApp.csproj",
+        "projectPath": "C:\\Users\\ruste\\OneDrive - Curio\\blok C\\veryReal_GamblingApp\\GamblingApp\\GamblingApp.csproj",
         "packagesPath": "C:\\Users\\ruste\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ruste\\OneDrive - Curio\\blok C\\GamblingApp\\GamblingApp\\obj\\",
+        "outputPath": "C:\\Users\\ruste\\OneDrive - Curio\\blok C\\veryReal_GamblingApp\\GamblingApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

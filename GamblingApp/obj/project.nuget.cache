@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "mpIb+2YJj+8=",
+  "dgSpecHash": "AwXaBT+J5DU=",
   "success": true,
-  "projectFilePath": "C:\\Users\\ruste\\OneDrive - Curio\\blok C\\GamblingApp\\GamblingApp\\GamblingApp.csproj",
+  "projectFilePath": "C:\\Users\\ruste\\OneDrive - Curio\\blok C\\veryReal_GamblingApp\\GamblingApp\\GamblingApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ruste\\.nuget\\packages\\microsoft.web.webview2\\1.0.3179.45\\microsoft.web.webview2.1.0.3179.45.nupkg.sha512",
     "C:\\Users\\ruste\\.nuget\\packages\\microsoft.windows.sdk.buildtools\\10.0.26100.7175\\microsoft.windows.sdk.buildtools.10.0.26100.7175.nupkg.sha512",
