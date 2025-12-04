@@ -57,6 +57,10 @@
             "Microsoft.WindowsAppSDK": {
               "target": "Package",
               "version": "[1.8.251106002, )"
+            },
+            "Pomelo.EntityFrameworkCore.MySql": {
+              "target": "Package",
+              "version": "[9.0.0, )"
             }
           },
           "imports": [
