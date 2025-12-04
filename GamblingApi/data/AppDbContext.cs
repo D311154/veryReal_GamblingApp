@@ -9,13 +9,14 @@ namespace GamblingApi.Data
 {
     internal class AppDbContext : DbContext
     {
-        public DbSet<SearchTerms> Search { get; set; }
+        public DbSet<Account> Accounts { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseMySql(
-                "server=localhost;port=3306;user=root;password=;database=gamblingdb;", ServerVersion.Parse("8.0.30")
-                );
+                "server=localhost;port=3306;user=root;password=;database=gamblingdb;", 
+                ServerVersion.Parse("9.0")
+            );
         }
     }
 }
