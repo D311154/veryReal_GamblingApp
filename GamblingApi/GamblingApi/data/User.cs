@@ -13,4 +13,10 @@ namespace GamblingApi.Data
         public string PasswordHash { get; set; }
         public int Balance { get; set; }
     }
+
+    internal class UserRequest
+    {
+        public string Username { get; set; }
+        public string Password { get; set; }
+    }
 }

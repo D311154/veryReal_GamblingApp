@@ -6,7 +6,7 @@ using System.Text.Json;
 using GamblingApi.Data;
 
 namespace GamblingApi;
-    internal class Program
+internal class Program
 {
     static void Main(string[] args)
     {
@@ -26,7 +26,9 @@ namespace GamblingApi;
             HttpListenerRequest request = context.Request;
             HttpListenerResponse response = context.Response;
 
-            if (request.HttpMethod == "GET")
+            string path = request.Url.AbsolutePath.ToLower();
+
+            if (path.EndsWith("/read"))
             {
                 var accountsList = db.Users.ToList();
 
@@ -40,27 +42,35 @@ namespace GamblingApi;
                 output.Close();
             }
 
-            else if (request.HttpMethod == "POST")
+            else if (path.EndsWith("/update"))
             {
-                using var reader = new StreamReader(request.InputStream, request.ContentEncoding);
-                string body = reader.ReadToEnd();
-
-                var newAccount = JsonSerializer.Deserialize<User>(body);
-
-                if (newAccount != null)
+                if (request.HttpMethod == "POST")
                 {
-                    db.Users.Add(newAccount);
-                    db.SaveChanges();
+                    using var reader = new StreamReader(request.InputStream, request.ContentEncoding);
+                    string body = reader.ReadToEnd();
 
-                    string responseString = JsonSerializer.Serialize(newAccount);
-                    byte[] bytes = System.Text.Encoding.UTF8.GetBytes(responseString);
-                    response.ContentType = "application/json";
-                    response.StatusCode = (int)HttpStatusCode.Created;
+                    var newAccount = JsonSerializer.Deserialize<UserRequest>(body);
 
-                    response.ContentLength64 = bytes.Length;
-                    var output = response.OutputStream;
-                    output.Write(bytes, 0, bytes.Length);
-                    output.Close();
+                    if (newAccount != null)
+                    {
+                        db.Users.Add(new User
+                        {
+                            Balance = 900,
+                            Username = newAccount.Username,
+                            PasswordHash = newAccount.Password,
+                        });
+                        db.SaveChanges();
+
+                        string responseString = JsonSerializer.Serialize(newAccount);
+                        byte[] bytes = System.Text.Encoding.UTF8.GetBytes(responseString);
+                        response.ContentType = "application/json";
+                        response.StatusCode = (int)HttpStatusCode.Created;
+
+                        response.ContentLength64 = bytes.Length;
+                        var output = response.OutputStream;
+                        output.Write(bytes, 0, bytes.Length);
+                        output.Close();
+                    }
                 }
             }
         }
