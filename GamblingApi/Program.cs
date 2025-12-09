@@ -3,7 +3,7 @@ using System.Text;
 using System.Text.Json;
 using GamblingApi.Data;
 
-namespace GamblingApi;
+namespace GamblingApi
 {
     internal class Program
     {
@@ -27,9 +27,9 @@ namespace GamblingApi;
 
                 if (request.HttpMethod == "GET")
                 {
-                    var accountsList = db.Accounts.ToList();
+                    var usersList = db.Users.ToList();
 
-                    string responseString = JsonSerializer.Serialize(accountsList);
+                    string responseString = JsonSerializer.Serialize(usersList);
                     byte[] bytes = System.Text.Encoding.UTF8.GetBytes(responseString);
                     response.ContentType = "application/json";
 
@@ -44,14 +44,14 @@ namespace GamblingApi;
                     using var reader = new StreamReader(request.InputStream, request.ContentEncoding);
                     string body = reader.ReadToEnd();
 
-                    var newAccount = JsonSerializer.Deserialize<Account>(body);
+                    var newUser = JsonSerializer.Deserialize<User>(body);
 
-                    if (newAccount != null)
+                    if (newUser != null)
                     {
-                        db.Accounts.Add(newAccount);
+                        db.Users.Add(newUser);
                         db.SaveChanges();
 
-                        string responseString = JsonSerializer.Serialize(newAccount);
+                        string responseString = JsonSerializer.Serialize(newUser);
                         byte[] bytes = System.Text.Encoding.UTF8.GetBytes(responseString);
                         response.ContentType = "application/json";
                         response.StatusCode = (int)HttpStatusCode.Created;
