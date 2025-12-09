@@ -42,7 +42,7 @@ internal class Program
                 output.Close();
             }
 
-            else if (path.EndsWith("/update"))
+            else if (path.EndsWith("/create"))
             {
                 if (request.HttpMethod == "POST")
                 {
