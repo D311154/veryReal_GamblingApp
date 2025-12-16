@@ -73,6 +73,39 @@ internal class Program
                     }
                 }
             }
+            else if (path.EndsWith("/update"))
+            {
+                if (request.HttpMethod == "PUT")
+                {
+                    using var reader = new StreamReader(request.InputStream, request.ContentEncoding);
+                    string body = reader.ReadToEnd();
+                    var updatedAccount = JsonSerializer.Deserialize<UserRequest>(body);
+                    if (updatedAccount != null)
+                    {
+                        var existingUser = db.Users.FirstOrDefault(u => u.Id == updatedAccount.Id);
+                        if (existingUser != null)
+                        {
+                            existingUser.Username = updatedAccount.Username;
+                            existingUser.PasswordHash = updatedAccount.Password;
+                            db.SaveChanges();
+                            string responseString = JsonSerializer.Serialize(updatedAccount);
+                            byte[] bytes = System.Text.Encoding.UTF8.GetBytes(responseString);
+                            response.ContentType = "application/json";
+                            response.StatusCode = (int)HttpStatusCode.OK;
+                            response.ContentLength64 = bytes.Length;
+                            var output = response.OutputStream;
+                            output.Write(bytes, 0, bytes.Length);
+                            output.Close();
+                        }
+                        else
+                        {
+                            response.StatusCode = (int)HttpStatusCode.NotFound;
+                            response.Close();
+                        }
+                    }
+                }
+                
+            }
         }
     }
 }

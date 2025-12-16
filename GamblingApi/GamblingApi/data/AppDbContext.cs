@@ -27,9 +27,9 @@ namespace GamblingApi.Data
                 new User
                 {
                     Id = 1,
-                    Username = "test user",
-                    PasswordHash = "test password",
-                    Balance = 100,
+                    Username = "user",
+                    PasswordHash = "test",
+                    Balance = 500,
                 }
             );
         }
